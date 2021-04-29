@@ -1,0 +1,55 @@
+<div class="row container">
+    <div class="col-12">
+           <h3>User list</h3>
+           
+              
+
+               <table class="table">
+                   <thead>
+                       <tr>
+                        <ng-container *ngTemplateOutlet="tableHeadBlock"></ng-container>
+                       </tr>
+                   </thead>
+             
+              <tbody>
+                  <tr *ngFor="let user of svc.users; let i = index">
+                      <th class="align-middle" scope="row"> {{i + 1}} </th>
+                      <ng-container *ngTemplateOutlet="tableBodyBlock;
+                      context:{ $implicit: user}"></ng-container>
+                      <ng-container *ngTemplateOutlet="userControlBlock; context: {user: user, index: i}"></ng-container>
+                  </tr>
+              </tbody>
+              </table>
+               <ng-template #tableHeadBlock>
+                   <th scope="col">#</th>
+                   <th scope="col">login</th>
+                   <th scope="col">password</th>
+                   <th scope="col">email</th>
+                   <th scope="col">age</th>
+                   <th scope="col">site</th>
+                   <th scope="col">role</th>
+                  
+               </ng-template>
+
+               <ng-template #tableBodyBlock let-user>
+                
+                   <td class="align-middle"> {{user.login}} </td>
+                   <td class="align-middle"> {{user.password}} </td>
+                   <td class="align-middle"> {{user.email}} </td>
+                   <td class="align-middle"> {{user.age}} </td>
+                   <td class="align-middle">{{user.site}}</td>
+                   <td class="align-middle">{{user.role}}</td>
+                
+               </ng-template>
+     <ng-template #userControlBlock let-user="user" let-i="index">
+         <td class="align-middle controls">
+             <button class="btn btn-outline-info" (click)="deleteUser(user)">delete</button>
+
+         </td>
+
+     </ng-template>
+          
+                <button type="button" (click)="logout()" class="btn btn-outline-success">logout</button> &nbsp;
+                <button type="button" (click)="getData()" class="btn btn-outline-success" >get data users</button>
+
+           

@@ -1,0 +1,96 @@
+
+
+                   <h3>SignUp Form</h3>
+
+            <div class="container wrapper" >
+             
+         
+               
+
+
+                <div class="row wrapper-form">
+                    <div class="col"> 
+
+                         <form [formGroup]="userLogin" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for=""> Login: 
+                                    <input type="text" class="form-control" formControlName="login" placeholder="login">
+                                    <div class="alert alert-danger" *ngIf="formError.login"> {{formError.login}} </div>
+                                </label>
+                               
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for=""> Password:
+                                    <input type="password" class="form-control" formControlName="password" placeholder="password">
+                                    <div class="alert alert-success" *ngIf="formError.password"> {{formError.password}} </div>
+                                </label>
+                                <div>
+
+                                </div>
+                            </div>
+
+                           
+
+
+                            <div class="form-group">
+                                <label for=""> Email:
+                                    <input type="text" class="form-control" formControlName="email" required placeholder="email">
+                                    <div class="" *ngIf="formError.email"> {{formError.email}}</div>
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label for=""> Age:
+                                    <input type="number" class="form-control" formControlName="age" placeholder="age">
+                                    <div class="alert alert-info" *ngIf="formError.age">{{formError.age}}</div>
+                                </label>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for=""> Site:
+                                    <input type="text" class="form-control" formControlName="site" placeholder="site">
+                                   
+                                   <div *ngIf="!site.valid && site.dirty" >
+                                    <div  *ngIf="formError.site"> {{formError.site}} </div>
+                                    <div  *ngIf="!formError.site && site.errors?.errorMesage"> {{validatorMessage.site.errorMesage}} </div>
+                
+                                   </div>
+                                   <div *ngIf="site.valid" class="alert alert-success">corect adress thx</div>
+                                    <div class="text-muted" *ngIf="site.pending"> {{validatorMessage.site.pending}} </div>
+                                   
+                                </label>
+                                
+                            </div>
+
+
+                            <div class="form-group">
+                            <label> Role:
+                                <select class="form-control"  formControlName="role" > 
+                                    <option [value]="null" selected disabled>select u role</option>
+                                    <option  *ngFor="let role of roles" [value]="role"> {{role}} </option>
+
+                                </select>   
+                                <div class="" *ngIf="formError.role"> {{formError.role}} </div>
+                                </label>
+                            </div> 
+                            
+                            <div class="form-group">
+                                <input  id="checkbox" type="checkbox" formControlName="terms" required> &nbsp;
+                                <label for="checkbox"> I read terms and conditions</label>
+                                <div class="alert alert-danger" *ngIf="formError.terms"> {{formError.terms}} </div>
+                               
+                            </div>
+                            
+                           <div class="form-group">
+                               <button class="btn btn-success" [disabled]="userLogin.invalid">but submit</button>
+                           </div>
+                        </form>
+                        <br> <br>
+                                <hr>
+                      
+                    </div>
+        </div>
+        </div>

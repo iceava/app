@@ -1,0 +1,32 @@
+
+
+<h3>please log in, to see costumer list </h3>
+
+
+
+<div class="row" class="container">
+    <div class="col">
+
+<div class="alert alert-success" role="alert"> {{ message }} </div>
+
+<div *ngIf='!sLogin.isLoggedIn' >
+
+<div class="form-group">
+    <label>user login &nbsp; &nbsp;&nbsp; <input type="text" [(ngModel)]="sLogin.log" class="form-control"></label>
+</div>
+
+<div class="form-group">
+    <label>user password <input type="text" [(ngModel)]="sLogin.pass" class="form-control"></label>
+</div>
+<div form-group>
+    <button (click)='login()' class="btn btn-outline-success">login</button>
+</div>
+
+</div>
+
+<ng-template [ngIf]='sLogin.isLoggedIn'>
+<p>succefull log, Hi admin</p>
+
+</ng-template>
+    </div>
+</div>
