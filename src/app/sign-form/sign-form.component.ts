@@ -10,9 +10,9 @@ import { emailValid, rangeValid } from '../validators';
   templateUrl: './sign-form.component.html',
   styleUrls: ['./sign-form.component.scss']
 })
-export class SignFormComponent implements OnInit {
+ export class SignFormComponent implements OnInit {
 
-  user: User = new User('', '', '', '',  0, '', '','');
+  user: User = new User('', '', '', '',  0, '', '', '');
 
   roles = ROLES;
   formError = FORM_ERROR
@@ -23,11 +23,10 @@ export class SignFormComponent implements OnInit {
   site!: AbstractControl;
   userLogin!: FormGroup;
 
+
   ngOnInit(): void {
     this.formValidator()
     this.createControl()
-    
-
   }
 
   formValidator () {
@@ -47,8 +46,8 @@ export class SignFormComponent implements OnInit {
 
   createControl() {
     this.site = this.userLogin.controls.site
- 
   }
+
 
   onValueChanged (data: any) {
     if(!this.userLogin){
@@ -62,9 +61,9 @@ export class SignFormComponent implements OnInit {
         for(const fild in this.formError){
           this.formError[fild] = ''
           const control = form.get(fild)
+
           if(control && control.dirty && control.invalid) {
             const mesage = this.validatorMessage[fild]
-
             
             for ( const key in control.errors){
               this.formError[fild] += mesage[key] + ' '
@@ -79,7 +78,7 @@ export class SignFormComponent implements OnInit {
      onSubmit() {
        this.svc.insertUser(this.userLogin.value)
        alert('user was created')
-       
+       this.userLogin.reset()
        
      }
 }

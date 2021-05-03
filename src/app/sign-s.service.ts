@@ -17,6 +17,7 @@ const httpOptions = {
 export class SignSService {
 
 users: User[] = [];
+key!: string;
 
   constructor(public http: HttpClient) { }
 

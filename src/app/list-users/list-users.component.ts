@@ -22,7 +22,9 @@ export class ListUsersComponent implements OnInit {
     } 
 
     getData() {
+      
       this.svc.getUser()
+      this.svc.users = []
     }
 
     deleteUser(users: any): void{
